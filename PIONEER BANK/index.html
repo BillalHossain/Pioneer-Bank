@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pioneer bank</title>
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/d472097d6a.js" crossorigin="anonymous"></script>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- additional -->
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- header -->
+
+    <section class="full-area">
+
+        <h1 class="text-center">WELCOME TO PIONEER BANK</h1>
+        <div class="submit-area mt-5 p-5">
+            <h2>Login</h2>
+            <form action="#">
+                <input type="email" class="form-control mt-2 mb-4 in" placeholder="Email" required>
+                <input type="password" class="form-control my-4 in" placeholder="Password" required>
+                <input id="login" class="btn btn-success" type="submit" value="Enter">
+            </form>
+        </div>
+
+    </section>
+
+
+    <!-- next page -->
+
+<section class="transaction">
+<div class="container">
+    <div class="row cash">
+        <div class="col-md-3 col-12 mx-md-auto">
+            <div class="deposit">
+                <h4>Deposit</h4>
+                <p class="display-6 fw-bold">$<span class="currentDeposit">00</span></p>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-12 mx-md-auto">
+            <div class="withdraw">
+                <h4>Withdraw</h4>
+                <p class="display-6 fw-bold">$<span class="currentWithdraw ">00</span></p>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-12 mx-md-auto">
+            <div class="balance">
+                <h4>Balance</h4>
+                <p class="display-6 fw-bold">$<span class="currentBalance">1240</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-5 mx-auto shadow-lg a">
+            <h4>Deposit</h4>
+            <input id="depo" type="text" class="form-control my-3" placeholder="$ amount you want to deposit">
+            <button class="btn btn-success depobtn">Deposit</button>
+        </div>
+
+        <div class="col-5 mx-auto shadow-lg a">
+            <h4>Withdraw</h4>
+            <input type="text" id="with" class="form-control my-3" placeholder="$ amount you want to withdraw">
+            <button class="btn btn-success withbtn">Withdraw</button>
+        </div>
+    </div>
+</div>
+
+
+</section>
+
+
+
+
+<script>
+    
+   var btn= document.getElementById("login");
+btn.addEventListener("click",function(){
+   var full=document.querySelector(".full-area");
+   full.style.display="none";
+   var transa=document.querySelector(".transaction");
+   transa.style.display="block"
+})
+
+
+// deposit and withdraw
+
+
+
+
+function depo(classes,inputParse){
+    var add=document.querySelector(classes).innerText;
+var addParse=parseFloat(add);
+var totalBalance=addParse+inputParse;
+document.querySelector(classes).innerText=totalBalance; 
+}
+ 
+var depobtn=document.querySelector(".depobtn");
+depobtn.addEventListener("click",function(){
+    var depoInput=document.getElementById("depo").value;
+   var depoParse=parseFloat(depoInput);
+
+depo(".currentDeposit",depoParse);
+
+depo(".currentBalance",depoParse);
+document.getElementById("depo").value="";
+
+});
+
+var withbtn=document.querySelector(".withbtn");
+withbtn.addEventListener("click",function(){
+    var withInput=document.getElementById("with").value;
+    var withParse=parseFloat(withInput);
+    
+
+//     var currentWithdraw=document.querySelector(".currentWithdraw").innerText;
+//  var withdrawParse=parseFloat(currentWithdraw);
+//  var totalWith=withdrawParse+withParse;
+//  document.querySelector(".currentWithdraw").innerText=totalWith;
+
+depo(".currentWithdraw",withParse);
+depo(".currentBalance",-1*withParse);
+
+ document.getElementById("with").value="";
+
+})
+
+
+
+</script>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+
+</body>
+
+</html>
